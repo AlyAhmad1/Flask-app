@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% block title %} Add a New Hotel {% endblock %}</h2>
+
+<div class="form-group">
+    <form method="post">
+        <div class="row">
+            <div class="col">
+                <label for="market_id">Market ID</label>
+                <input type="text" name="market_id" id="market_id" placeholder="Market ID" class="form-control"
+                    value="{{ hotel['item_market_id'] }}"></input>
+            </div>
+            <div class="col">
+                <label for="name">Hotel Name</label>
+                <input type="text" name="name" id="name" placeholder="Hotel Name" class="form-control"
+                    value="{{ hotel['item_name'] }}"></input>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <label for="address">Hotel Address</label>
+                <input type="text" name="address" id="address" placeholder="Hotel Address" class="form-control"
+                    value="{{ hotel['item_address'] }}"></input>
+            </div>
+            <div class="col">
+                <label for="url">Url</label>
+                <input type="text" name="url" id="url" placeholder="scrape url" class="form-control"
+                    value="{{ hotel['item_url'] }}"></input>
+            </div>
+
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" style="position: absolute; right: 10px;">Add</button>
+            </div>
+           
+        </div>
+    </form>    
+</div>
+
+{% endblock %}

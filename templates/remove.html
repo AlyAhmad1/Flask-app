@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% block title %} Remove Hotel {% endblock %}</h2>
+
+<div class="form-group">
+    <form action="{{ url_for('delete') }}" method="POST">
+        <div class="row">
+            <div class="col">
+                <label for="hotel">Hotels List:</label>
+                <div class="input-group">
+                    <select class="form-select" name="hotel" id="hotel" onchange="showRemoveHotel()">
+                        <option value=""></option>
+                        {% for item in hotels %}
+                        {% if hotel['item_market_id']==item['item_market_id'] %}
+                        <option value="{{ item['item_market_id'] }}" selected>{{ item['item_name'] }}</option>
+                        {% else %}
+                        <option value="{{ item['item_market_id'] }}">{{ item['item_name'] }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class=" col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="market_id">Market ID</label>
+                <input type="text" name="market_id" id="market_id" placeholder="Market ID" class="form-control"
+                       value="{{ hotel['item_market_id'] }}"></input>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Delete Hotel" class="btn btn-danger btn-sm" id="hotel_delete"
+                               onclick="return confirm('Are you sure you want to delete this hotel?')"
+                               style="position: relative; left: 5px;">
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    {% if hotel['item_market_id'] != "" %}
+                    <form action="{{ url_for('clear_history', history_id=hotel.id) }}" method="POST">
+                        <input type="submit" value="Clear History" class="btn btn-info btn-sm"
+                               id="clear_history"
+                               style="position: relative; right: 0;"
+                               onclick="return confirm('Are you sure you want to clear history of this hotel?')">
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

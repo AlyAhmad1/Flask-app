@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% block title %} Welcome to BookingScrapper {% endblock %}</h2>
+{% for hotel in hotels %}
+<a href="{{ url_for('hotel', hotel_id=hotel['item_market_id']) }}">
+    <h2>{{ hotel["item_name"] }}</h2>
+</a>
+<span class="badge rounded-pill bg-primary">{{ hotel['item_rating'] }}</span>
+<span class="badge rounded-pill bg-success">Last update : {{ hotel['item_last_update'] }}</span>
+<hr>
+{% endfor %}
+{% endblock %}

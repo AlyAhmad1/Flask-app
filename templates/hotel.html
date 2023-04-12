@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% block title %} {{ hotel['item_name'] }} Hotel {% endblock %}</h2>
+
+
+<form method="post" action="{{ url_for('show_hotel') }}">
+    <div class="row">
+        <div class="col"><label for="hotel">Hotels List:</label>
+            <div class="input-group">
+                <select class="form-select" name="hotel" id="hotel" onchange="showHotel()">
+                    <option value=""></option>
+                    {% for item in hotels %}
+                    {% if hotel['item_market_id']==item['item_market_id'] %}
+                    <option value="{{ item['item_market_id'] }}" selected>{{ item['item_name'] }}</option>
+                    {% else %}
+                    <option value="{{ item['item_market_id'] }}">{{ item['item_name'] }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col"></div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="market_id">Market ID</label>
+            <input type="text" name="market_id" id="market_id" placeholder="Market ID" class="form-control"
+                   value="{{ market_id }}"></input>
+        </div>
+        <div class="col">
+            <br>
+            <button type="submit" class="btn btn-primary">Show</button>
+        </div>
+
+    </div>
+</form>
+<br>
+<div class="row">
+    {% if len > 5 %}
+    {% for i in range(0, 3) %}
+    <div class="col">
+        <img src="{{ images[i]['item_url'] }}" class="img-thumbnail" style="height: 100%;" alt="Responsive image"/>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<br>
+<div class="row">
+    {% if len > 5 %}
+    {% for i in range(3, 6) %}
+    <div class="col">
+        <img src="{{ images[i]['item_url'] }}" class="img-thumbnail" style="height: 100%;" alt="Responsive image"/>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<br>
+<div class="row">
+    <p>{{ hotel['item_description'] }}</p>
+</div>
+<br>
+<div class="row">
+    <div class="col"></div>
+    <div class="col"><span class="badge rounded-pill bg-primary">{{ hotel['item_rating'] }}</span></div>
+</div>
+<br><br>
+{% endblock %}
