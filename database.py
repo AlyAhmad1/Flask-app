@@ -15,10 +15,13 @@ cfg.read('configuration.ini')
 # Database class that is used to connect with DB.
 class Database:
     """DB class that use to connect with different methods"""
+    # engine = db.create_engine(
+    #     'postgresql://' + cfg['Database']['user'] + ':' +
+    #     cfg['Database']['password'] + '@' + cfg['Database'][
+    #         'host'] + '/' + cfg['Database']['name'])
+
     engine = db.create_engine(
-        'postgresql://' + cfg['Database']['user'] + ':' +
-        cfg['Database']['password'] + '@' + cfg['Database'][
-            'host'] + '/' + cfg['Database']['name'])
+        'sqlite://' + '/' + 'temp_DB.db')
 
     def __init__(self):
         self.connection = self.engine.connect()
