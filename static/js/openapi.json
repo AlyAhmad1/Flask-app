@@ -1,0 +1,320 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Scrapper API",
+    "description": "All Scrapper API Documentation"
+  },
+  "paths": {
+    "/api/getHotelByMarketId": {
+      "get": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "Get Hotel Data",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "market_id",
+            "required": true,
+            "description": "language",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/addHotelByMarketId": {
+      "put": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "Add Hotel Data By Market ",
+        "requestBody": {
+          "description": "Add Hotel",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "abc"
+                  },
+                  "url": {
+                    "type": "string",
+                    "example": "https://abc"
+                  },
+                  "market_id": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "House 9 street abc"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url",
+                  "market_id",
+                  "address"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/deleteHotelByMarketId": {
+      "delete": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "Delete Hotel Data",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "market_id",
+            "required": true,
+            "description": "language",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/updateHotelByMarketId": {
+      "post": {
+        "tags": [
+          "Hotel"
+        ],
+        "description": "Update Hotel Data",
+        "requestBody": {
+          "description": "Update Hotel",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "abc"
+                  },
+                  "url": {
+                    "type": "string",
+                    "example": "https://abc"
+                  },
+                  "market_id": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "House 9 street abc"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url",
+                  "market_id",
+                  "address"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/giveMeCurrentWaitingScrappingList": {
+      "get": {
+        "tags": [
+          "Schedules"
+        ],
+        "description": "Get Schedules",
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/deleteScheduleById": {
+      "delete": {
+        "tags": [
+          "Schedules"
+        ],
+        "description": "Delete Schedule",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "schedule_id",
+            "required": true,
+            "description": "language",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/addScheduleByMarketId": {
+      "put": {
+        "tags": [
+          "Schedules"
+        ],
+        "description": "Add Schedule",
+        "requestBody": {
+          "description": "Add Schedule",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "market_id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "day": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "time": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "market_id",
+                  "day",
+                  "shipDate"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Server Error!"
+          },
+          "400": {
+            "description": "Invalid data."
+          },
+          "404": {
+            "description": "Data not found."
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 __pycache__/
 venv/
 migrations/
-static/
+
 # Compiled source #
 ###################
 *.com
